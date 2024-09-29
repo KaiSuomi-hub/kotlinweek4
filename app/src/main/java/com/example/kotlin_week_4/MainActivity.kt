@@ -1,6 +1,7 @@
 package com.example.kotlin_week_4
 
 import android.os.Bundle
+import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,7 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,29 +26,32 @@ import com.example.kotlin_week_4.ui.theme.Typography
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             Kotlinweek4Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding)) {
-                        MyApp()
-                    }
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+
+                ) {
+                    MyApp()
                 }
             }
         }
     }
 }
 
+
+
 @Composable
 fun MyApp() {
-    val appModifier = Modifier.fillMaxWidth().padding(8.dp)
+    val appModifier = Modifier
+        .fillMaxWidth()
+        .padding(8.dp)
     Column {
         var verticalArrangement = Arrangement.spacedBy(16.dp)
         Text(
             text="My title",
-            style = MaterialTheme.typography.h5,
-            modifier = appModifier
-        )
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = appModifier)
         OutlinedTextField(
             value = "",
             onValueChange = {/*TODO*/},
@@ -55,15 +59,18 @@ fun MyApp() {
         )
         Button(
             onClick = { /*TODO*/ },
-            modifier = appModifier
+            modifier = appModifier,
+            
         ) {
-            Text("Click me")
+            Text("Submit")
         }
     }
 }
 
 @Preview
 @Composable
-fun PreviewMyApp() {
-    MyApp()
-}
+fun Surface() {
+    Kotlinweek4Theme {
+        MyApp()
+
+}}
